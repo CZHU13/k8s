@@ -1,9 +1,12 @@
 sed -i 's/#PermitRootLogin/PermitRootLogin/g' /etc/ssh/sshd_config
 sed -i 's/#PasswordAuthentication/PasswordAuthentication/g' /etc/ssh/sshd_config
 systemctl restart sshd
+
+# Install epel-release repository on all machines.
 yum -y install epel-release
 yum -y install ansible
 
+# update /etc/hosts
 cat <<EOF >  /etc/hosts
 #!/bin/bash
 127.0.0.1  localhost localhost.localdomain localhost4 localhost4.localdomain4
