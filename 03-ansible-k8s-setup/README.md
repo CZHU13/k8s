@@ -106,34 +106,32 @@ required for this setup from our git repository.
 On ansible.example.com.   
 First run the k8s-pkg.yml playbook  
 This playbook will do these tasks on all machines.  
-1.Disable firewalld  
-2.Disable Swap and remove entry from /etc/fstab  
-3.Disable SELinux and update /etc/selinux/config file
-4.Enable Bridging using sysctl  
-5.Install Docker and start docker service  
-6.Add kubernetes repository  
-7.Install kubelet and kubeadm  
-8.Start kubelet service  
+1.Disable firewalld.  
+2.Disable Swap and remove entry from /etc/fstab.  
+3.Disable SELinux and update /etc/selinux/config file.  
+4.Enable Bridging using sysctl.  
+5.Install Docker and start docker service.  
+6.Add kubernetes repository.  
+7.Install kubelet and kubeadm.  
+8.Start kubelet service.  
 9.When everything is done, "reboot" all machines.
-
 ```bash
 # ansible-playbook k8s-pkg.yml --syntax-check
 ```
-
-On ansible.example.com. Now run the "k8s-mater.yml" file  
+On ansible.example.com. Now run the "k8s-master.yml" file  
 This playbook will do these tasks:  
 1.Initialize kubernetes cluster with custom pod network and  
-your server internal IP as communication IP  
-2.Copy the admin.conf to user's home directory  
-3.Install overlay network - flannel  
+your server internal IP as communication IP.  
+2.Copy the admin.conf to user's home directory.  
+3.Install overlay network - flannel.  
 ```bash
 # ansible-playbook k8s-master.yml --syntax-check
 ```
 
 On "ansible.example.com". Now run "k8s-workers.yml".  
 Thisplaybook will do these tasks:  
-1.Create token for workers to join the cluster  
-2.Run the join command on all workers in our cluster 
+1.Create token for workers to join the cluster.  
+2.Run the join command on all workers in our cluster. 
 ```bash
 # ansible-playbook k8s-workers.yml --syntax-check
 ```
