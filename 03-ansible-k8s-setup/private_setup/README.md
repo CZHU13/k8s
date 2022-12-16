@@ -7,7 +7,7 @@ https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant
 
 
 
-## k8s with ansible
+## k8s with ansible on centos7
 
 If you know Ansible .  
 You can use ansible ti setup your kubernetes cluster in couple of minutes.  
@@ -27,6 +27,7 @@ Before you move ahead . These are the pre-requisites.
 
 ## Virtual machines setup needed
 (Network Interface Card) : NIC  网卡  
+ensure your vm machines can access the internet.  
 ### 1.Ansible controller - controller.example.com
 OS:CentOS 7               
 CPU cores - 1  
@@ -49,7 +50,7 @@ NIC - a. NAT b.Internal
 Internet connectivity - Internal NIC IP - 10.0.0.101/8  
 
 
-### 4.Kubernetes Node - nodeTwo.example.com
+### 4.Kubernetes Node - nodetwo.example.com
 OS - Centos 7  
 CPU Cores - 1  
 RAM - 2 GiB  
