@@ -9,25 +9,31 @@ Vagrant.configure("2") do |config|
         v.cpus = 2
     end
 
-    config.vm.define "k8s-master" do |master|
-        master.vm.box = IMAGE_NAME
-        master.vm.network "private_network", ip: "10.0.0.100"
-        master.vm.hostname = "master"
-    end
-
     config.vm.define "k8s-ansiblec" do |ansiblec|
         ansiblec.vm.box = IMAGE_NAME
         ansiblec.vm.network "private_network", ip: "10.0.0.99"
         ansiblec.vm.hostname = "ansible"
+        ansiblec.vm.provision "shell", path: "script.sh"
     end
 
+    config.vm.define "k8s-master" do |master|
+        master.vm.box = IMAGE_NAME
+        master.vm.network "private_network", ip: "10.0.0.100"
+        master.vm.hostname = "master.example.com"
+        master.vm.provision "shell", path: "script.sh"
+    end
 
+    config.vm.define "nodeone" do |node|
+        node.vm.box = IMAGE_NAME
+        node.vm.network "private_network", ip: "10.0.0.101"
+        node.vm.hostname = "nodeone.example.com"
+        node.vm.provision "shell", path: "script.sh"
+    end
 
-    (1..N).each do |i|
-        config.vm.define "node-#{i}" do |node|
-            node.vm.box = IMAGE_NAME
-            node.vm.network "private_network", ip: "10.0.0.#{i}"
-            node.vm.hostname = "node-#{i}"
-        end
+    config.vm.define "nodetwo" do |node|
+        node.vm.box = IMAGE_NAME
+        node.vm.network "private_network", ip: "10.0.0.102"
+        node.vm.hostname = "nodetwo.example.com"
+        node.vm.provision "shell", path: "script.sh"
     end
 end

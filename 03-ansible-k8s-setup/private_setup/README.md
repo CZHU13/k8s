@@ -46,7 +46,7 @@ OS - Centos 7
 CPU Cores - 1  
 RAM - 2 GiB  
 NIC - a. NAT b.Internal  
-Internet connectivity - Internal NIC IP - 10.0.0.1/8  
+Internet connectivity - Internal NIC IP - 10.0.0.101/8  
 
 
 ### 4.Kubernetes Node - nodeTwo.example.com
@@ -54,34 +54,38 @@ OS - Centos 7
 CPU Cores - 1  
 RAM - 2 GiB  
 NIC - a. NAT b.Internal  
-Internet connectivity - Internal NIC IP - 10.0.0.2/8  
+Internet connectivity - Internal NIC IP - 10.0.0.102/8  
 
 
 ## Ansible Controller configuration
-### 1.Check /etc/hosts and hostname
+
+
+### 1.Install epel-release repository. Repeat on all machines.
+
+```bash
+yum -y install epel-release
+yum -y install ansible
+```
+
+### 2.Check /etc/hosts and hostname
 ```bash
 # vi /etc/hosts
 127.0.0.1  localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1        localhost localhost.localdomain localhost6 localhost6.localdomain6
 10.0.0.99  ansible.example.com ansible
 10.0.0.100 master.example.com master
-10.0.0.1   nodeone.example.com node1
-10.0.0.2   nodetwo.example.com node2
+10.0.0.101   nodeone.example.com nodeone
+10.0.0.102   nodetwo.example.com nodetwo
 
 # hostname
 ansible.example.com
 
 # scp /etc/hosts root@10.0.0.100:/etc
-# scp /etc/hosts root@10.0.0.1:/etc
-# scp /etc/hosts root@10.0.0.2:/etc
+# scp /etc/hosts root@10.0.0.101:/etc
+# scp /etc/hosts root@10.0.0.102:/etc
 ```
 
-### 2.Install epel-release repository. Repeat on all machines.
 
-```bash
-# yum -y install epel-release
-# yum -y install ansible
-```
 ### 3.generate ssh keys on Ansible Controller and copy ssh key to master/nodeone/nodetwo
 If everything is right . You must be able to ssh to all machines from Ansible machine ,without password .
 
