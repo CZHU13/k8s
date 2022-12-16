@@ -64,16 +64,16 @@ Internet connectivity - Internal NIC IP - 10.0.0.2/8
 127.0.0.1  localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1        localhost localhost.localdomain localhost6 localhost6.localdomain6
 10.0.0.99  ansible.example.com ansible
-l0.0.0.100 master.example.com master
-l0.0.0.1   nodeone.example.com nodeone
-10.0.0.2   nodetwo.example.com nodetwo
+10.0.0.100 master.example.com master
+10.0.0.1   nodeone.example.com node1
+10.0.0.2   nodetwo.example.com node2
 
 # hostname
 ansible.example.com
 
-# scp /etc/hosts root@l0.0.0.100:/etc
-# scp /etc/hosts root@l0.0.0.1:/etc
-# scp /etc/hosts root@l0.0.0.2:/etc
+# scp /etc/hosts root@10.0.0.100:/etc
+# scp /etc/hosts root@10.0.0.1:/etc
+# scp /etc/hosts root@10.0.0.2:/etc
 ```
 
 ### 2.Install epel-release repository. Repeat on all machines.
