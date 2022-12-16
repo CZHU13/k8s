@@ -1,0 +1,33 @@
+IMAGE_NAME = "centos/7"
+N = 2
+
+Vagrant.configure("2") do |config|
+    config.ssh.insert_key = false
+
+    config.vm.provider "virtualbox" do |v|
+        v.memory = 2048
+        v.cpus = 2
+    end
+
+    config.vm.define "k8s-master" do |master|
+        master.vm.box = IMAGE_NAME
+        master.vm.network "private_network", ip: "10.0.0.100"
+        master.vm.hostname = "master"
+    end
+
+    config.vm.define "k8s-ansiblec" do |ansiblec|
+        ansiblec.vm.box = IMAGE_NAME
+        ansiblec.vm.network "private_network", ip: "10.0.0.99"
+        ansiblec.vm.hostname = "ansible"
+    end
+
+
+
+    (1..N).each do |i|
+        config.vm.define "node-#{i}" do |node|
+            node.vm.box = IMAGE_NAME
+            node.vm.network "private_network", ip: "10.0.0.#{i}"
+            node.vm.hostname = "node-#{i}"
+        end
+    end
+end
