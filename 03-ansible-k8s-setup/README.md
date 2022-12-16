@@ -1,4 +1,9 @@
-Youtube address: https://www.youtube.com/watch?v=SrhmT-zzoeA  
+Youtube address: 
+https://www.youtube.com/watch?v=SrhmT-zzoeA  
+
+official reference : 
+https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/
+
 
 
 
