@@ -21,8 +21,8 @@ Before you move ahead . These are the pre-requisites.
 2. ansible skills .
 
 ## Virtual machines setup needed
+(Network Interface Card) : NIC  网卡  
 ### 1. Ansible controller - controller.example.com
-(Network Interface Card) : NIC  网卡
 OS:CentOS7              CPU cores:1  
 RAM: 2GiB               NIC's -a.NAT b.internal
 Internet connectivity   Internal NIC IP - 10.0.0.99/8
