@@ -1,12 +1,3 @@
-Youtube address: 
-https://www.youtube.com/watch?v=SrhmT-zzoeA  
-
-official reference : 
-https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/
-
-
-
-
 ## k8s with ansible on centos7
 
 If you know Ansible .  
@@ -55,8 +46,7 @@ OS - Centos 7
 CPU Cores - 1  
 RAM - 2 GiB  
 NIC - a. NAT b.Internal  
-Internet connectivity - Internal NIC IP - 10.0.0.102/8  
-
+Internet connectivity - Internal NIC IP - 10.0.0.102/8
 
 ## use vagrant to install centos
 
@@ -160,6 +150,7 @@ exit
 required for this setup from our git repository.
 ```bash
 # mkdir -p  /root/ansible-k8s-setup
+# cd /root/ansible-k8s-setup
 ```
 then upload file ansible.cfg/hosts/k8s-master.yml/k8s-pkg.yml/k8s-workers.yml to dir /root/ansible-k8s-setup  
 

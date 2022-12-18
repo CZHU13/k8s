@@ -9,12 +9,7 @@ Vagrant.configure("2") do |config|
         v.cpus = 2
     end
 
-    config.vm.define "k8s-ansiblec" do |ansiblec|
-        ansiblec.vm.box = IMAGE_NAME
-        ansiblec.vm.network "private_network", ip: "10.0.0.99"
-        ansiblec.vm.hostname = "ansible.example.com"
-        ansiblec.vm.provision "shell", path: "script.sh"
-    end
+
 
     config.vm.define "k8s-master" do |master|
         master.vm.box = IMAGE_NAME
@@ -35,5 +30,12 @@ Vagrant.configure("2") do |config|
         node.vm.network "private_network", ip: "10.0.0.102"
         node.vm.hostname = "nodetwo.example.com"
         node.vm.provision "shell", path: "script.sh"
+    end
+
+    config.vm.define "k8s-ansiblec" do |ansiblec|
+        ansiblec.vm.box = IMAGE_NAME
+        ansiblec.vm.network "private_network", ip: "10.0.0.99"
+        ansiblec.vm.hostname = "ansible.example.com"
+        ansiblec.vm.provision "shell", path: "script.sh"
     end
 end
