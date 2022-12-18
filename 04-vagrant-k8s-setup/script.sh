@@ -34,11 +34,6 @@ EOF
 # Timezone setup
 timedatectl set-timezone Asia/Shanghai
 
-# stop firewall
-systemctl stop firewalld
-systemctl disable firewalld
-
-
 # generate ssh keys on Ansible Controller and copy ssh key to master/nodeone/nodetwo
 if [ $HOSTNAME = "ansible.example.com" ] ; then
 expect <<EOF
